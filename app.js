@@ -24,6 +24,7 @@ app.get("/favicon.ico", (req, res) => {
 });
 
 console.log(process.env.CONN);
+
 mongoose.connect(process.env.CONN, { useNewUrlParser: true })
 .then(() => {
   console.log('Connected to MongoDB database')
