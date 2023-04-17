@@ -22,9 +22,15 @@ app.use(express.static("public"));
 app.get("/favicon.ico", (req, res) => {
   res.sendStatus(204);
 });
- 
 
-mongoose.connect(process.env.CONN, { useNewUrlParser: true });
+console.log(process.env.CONN);
+mongoose.connect(process.env.CONN, { useNewUrlParser: true })
+.then(() => {
+  console.log('Connected to MongoDB database')
+})
+.catch((error) => {
+  console.log('Error connecting to MongoDB database:', error.message)
+})
 
 const itemSchema = {
   name: String
